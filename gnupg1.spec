@@ -22,6 +22,7 @@ BuildRequires: libusb-devel
 %endif
 # pgp-tools, perl-GnuPG-Interface include 'Requires: gpg' -- Rex
 Provides: gpg1 = %{version}-%{release}
+Obsoletes: gnupg < 1.4.23-3
 
 %description
 GnuPG (GNU Privacy Guard) is a GNU utility for encrypting data and
