@@ -52,6 +52,7 @@ CFLAGS="$RPM_OPT_FLAGS -fPIE -DPIC" ; export CFLAGS
 LDFLAGS="$RPM_OPT_FLAGS -pie -Wl,-z,relro,-z,now" ; export LDFLAGS
 %configure \
     --disable-rpath \
+    --disable-exec \
     --with-zlib --enable-noexecstack \
     $configure_flags
 %make_build
@@ -89,11 +90,6 @@ done
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/FAQ
 %{_datadir}/%{name}/options.skel
-%dir %{_libexecdir}/gnupg1
-%{_libexecdir}/%{name}/gpgkeys_curl
-%{_libexecdir}/%{name}/gpgkeys_finger
-%{_libexecdir}/%{name}/gpgkeys_hkp
-%{_libexecdir}/%{name}/gpgkeys_ldap
 %{_infodir}/gnupg1.info.gz
 %{_mandir}/man1/gpg-zip1.1.gz
 %{_mandir}/man1/gpg1.1.gz
@@ -102,6 +98,8 @@ done
 %changelog
 * Wed Dec 05 2018 Brian C. Lane <bcl@redhat.com> - 1.4.23-3
 - Rename the package to gnupg1 (#1656282)
+- Rename the binarys to gpg1, gpgv1, gpg-zip1, gpgsplit1 (#1656282)
+- Remove keyserver support at the suggestion of upstream (#1656282)
 
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.23-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
